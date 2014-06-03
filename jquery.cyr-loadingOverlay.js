@@ -12,11 +12,14 @@
         var settings = $.extend({
             overlay_color: "#FFFFFF",
             loading_img: 'loading-spinner-large.gif',
-            overlay_opacity: 0.8
+            overlay_opacity: 0.8,
+            text: 'Chargement en cours...',
+            textColor: '#000',
+            textSize: '20px'
         }, options);
         //Définition des styles CSS
         var style="<style id='loading-style'>\n";
-        style+=".loading-overlay, .loading-img {\n";
+        style+=".loading-overlay {\n";
         style+="position: absolute;\n";
         style+="top: 0;\n";
         style+="left: 0;\n";
@@ -30,14 +33,26 @@
         style+="}\n";
         style+=".loading-img {\n";
         style+="z-index: 1020;\n";
+        style+="position: relative;\n";
         style+="background: transparent url('"+settings.loading_img+"') 50% 50% no-repeat;\n";
+        style+="height: 64px;\n";
+        style+="margin: auto;\n";
+        style+="top: 30%;\n";
         style+="}\n";
+        style+=".loading-text {\n";
+        style+="color: "+settings.textColor+";\n";
+        style+="z-index: 1030;\n";
+        style+="position: relative;\n";
+        style+="text-align: center;\n";
+        style+="top: 30%;\n";
+        style+="width: 100%;\n";
+        style+="font-size: "+settings.textSize+";\n";
+        style+="}\n";
+        
         // injecter les styles CSS
         this.append(style);
         // injecter le cadre blanc (overlay)
-        this.append("<div class='loading-overlay'></div>");
-        // injecter l'image de chargement
-        this.append("<div class='loading-img'></div>");
+        this.append("<div class='loading-overlay'><div class='loading-img'></div><div class='loading-text'><b>"+settings.text+"</b></div></div>");
     }
     // Fonction qui arrête le plugin
     $.fn.loadingStop=function() {
@@ -51,4 +66,3 @@
 
 
 }( jQuery ));
-

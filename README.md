@@ -20,7 +20,10 @@ Include ```jquery.cyr-loadingOverlay.js``` after jQuery:
 $('#my-bloc').loadingStart({
   overlay_color: "#FFFFFF",
   loading_img: '/path/to/loading.gif',
-  overlay_opacity: 0.8
+  overlay_opacity: 0.8,
+  text: 'Loading...',
+  textColor: '#000',
+  textSize: '22px'
 });
 ```
 
@@ -40,3 +43,8 @@ overlay_opacity : define the opacity of the overlay (between 0 and 1, 0is invisi
 
 loading_img : path to the image that is displayed on the loading overlay (like spinner for example)
 
+text : define the text that will be shown
+
+textColor : define the font color of the text
+
+textSize : define the font size of the text
